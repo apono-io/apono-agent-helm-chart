@@ -59,7 +59,7 @@ tolerations: []
 affinity: {}
 
 apono:
-  url: "app.apono.io"
+  url: "api.apono.io"
   token: ""
   websocketSsl: "enable"
   resourcesConfig: ""
