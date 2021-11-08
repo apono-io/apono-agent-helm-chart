@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "apono-agent.fullname" . }}
+  labels:
+    {{- include "apono-agent.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "apono-agent.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        releaseTime: {{ dateInZone "2006-01-02 15:04:05Z" (now) "UTC"| quote }}
+        {{ if .Values.podAnnotations }}
+        {{ toYaml .Values.podAnnotations | nindent 8 }}
+        {{ end }}
+      labels:
+        {{- include "apono-agent.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "apono-agent.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: "/etc/apono"
+              name: apono-config
+              readOnly: true
+          env:
+            - name: RESOURCES_CONFIG_PATH
+              value: "/etc/apono/resources_config.json"
+            - name: APONO_URL
+              value: {{ .Values.apono.url }}
+            - name: APONO_WEBSOCKET_SSL
+              value: {{ .Values.apono.websocketSsl }}
+            - name: APONO_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: apono
+                  key: token
+            - name: APONO_AGENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: apono-agent-id
+                  key: id
+      volumes:
+        - name: apono-config
+          secret:
+            secretName: apono
+            items:
+              - key: config
+                path: "resources_config.json"
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
