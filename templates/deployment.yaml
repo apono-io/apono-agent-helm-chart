@@ -46,7 +46,7 @@ spec:
           env:
             - name: RESOURCES_CONFIG_PATH
               value: "/etc/apono/resources_config.json"
-            - name: APONO_STORAGE_ENV_DIR
+            - name: APONO_SECRETS_DIR
               value: "/mnt/secrets-store"
             - name: APONO_URL
               value: {{ .Values.apono.url }}
