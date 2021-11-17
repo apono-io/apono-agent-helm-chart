@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: registry.internal.apono.io/apono-agent
+  repository: aponoio/apono-agent
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.0.16"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
