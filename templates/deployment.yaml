@@ -45,6 +45,10 @@ spec:
               value: {{ .Values.apono.url }}
             - name: APONO_WEBSOCKET_SSL
               value: {{ .Values.apono.websocketSsl }}
+            - name: APONO_ACTIONS_PARALLELISM
+              value: {{ .Values.apono.actionsParallelism }}
+            - name: APONO_ACTIONS_QUEUE_SIZE
+              value: {{ .Values.apono.actionsQueueSize }}
             - name: APONO_TOKEN
               valueFrom:
                 secretKeyRef:
