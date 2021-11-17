@@ -38,9 +38,16 @@ spec:
             - mountPath: "/etc/apono"
               name: apono-config
               readOnly: true
+            {{- if .Values.secretProviderClass }}
+            - name: secrets-store-inline
+              readOnly: true
+              mountPath: /mnt/secrets-store
+            {{- end }}
           env:
             - name: RESOURCES_CONFIG_PATH
               value: "/etc/apono/resources_config.json"
+            - name: APONO_SECRETS_DIR
+              value: "/mnt/secrets-store"
             - name: APONO_URL
               value: {{ .Values.apono.url }}
             - name: APONO_WEBSOCKET_SSL
@@ -62,6 +69,14 @@ spec:
             items:
               - key: config
                 path: "resources_config.json"
+        {{- if .Values.secretProviderClass }}
+        - name: secrets-store-inline
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: {{ .Values.secretProviderClass }}
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

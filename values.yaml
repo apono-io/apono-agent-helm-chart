@@ -28,6 +28,8 @@ podAnnotations: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
+secretProviderClass: ""
+
 securityContext: {}
   # capabilities:
   #   drop:
