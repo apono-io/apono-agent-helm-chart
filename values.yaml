@@ -28,6 +28,7 @@ podAnnotations: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
+secretName: ""
 secretProviderClass: ""
 
 securityContext: {}
@@ -69,3 +70,9 @@ apono:
   agentId: ""
   actionsParallelism: ""
   actionsQueueSize: ""
+  resourceName: ""
+  resourceType: ""
+  resourceHostname: ""
+  resourcePort: ""
+  resourceUsername: ""
+  resourcePassword: ""

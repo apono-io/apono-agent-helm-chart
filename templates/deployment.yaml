@@ -38,7 +38,7 @@ spec:
             - mountPath: "/etc/apono"
               name: apono-config
               readOnly: true
-            {{- if .Values.secretProviderClass }}
+            {{- if (include "apono-agent.secretProviderClassName" .) }}
             - name: secrets-store-inline
               readOnly: true
               mountPath: /mnt/secrets-store
@@ -73,13 +73,13 @@ spec:
             items:
               - key: config
                 path: "resources_config.json"
-        {{- if .Values.secretProviderClass }}
+        {{- if (include "apono-agent.secretProviderClassName" .) }}
         - name: secrets-store-inline
           csi:
             driver: secrets-store.csi.k8s.io
             readOnly: true
             volumeAttributes:
-              secretProviderClass: {{ .Values.secretProviderClass }}
+              secretProviderClass: {{ include "apono-agent.secretProviderClassName" . }}
         {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
