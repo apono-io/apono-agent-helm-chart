@@ -60,3 +60,14 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Create the name of the secret provider class to use
+*/}}
+{{- define "apono-agent.secretProviderClassName" -}}
+{{- if .Values.secretName }}
+{{- printf "%s-%s" .Values.secretName "secret-provider-class" | lower | trunc 63 | trimSuffix "-" }}
+{{- else }}
+{{- default "" .Values.secretProviderClass }}
+{{- end }}
+{{- end }}
