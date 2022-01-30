@@ -43,6 +43,9 @@ spec:
               readOnly: true
               mountPath: /mnt/secrets-store
             {{- end }}
+            - name: git-sync
+              readOnly: true
+              mountPath: "/app/git-sync"
           env:
             - name: RESOURCES_CONFIG_PATH
               value: "/etc/apono/resources_config.json"
@@ -66,7 +69,22 @@ spec:
                 secretKeyRef:
                   name: apono-agent-id
                   key: id
+            - name: TEMPLATES_PATH
+              value: "/app/git-sync/apono-agent-templates"
+        - name: git-sync
+          image: {{ .Values.gitSyncImage | quote }}
+          env:
+            - name: GIT_SYNC_REPO
+              value: "https://{{ .Values.githubAccessToken }}@github.com/{{ .Values.templatesRepository }}"
+            - name: GIT_SYNC_BRANCH
+              value: "master"
+          volumeMounts:
+            - name: git-sync
+              mountPath: "/tmp/git"
+
       volumes:
+        - name: git-sync
+          emptyDir: {}
         - name: apono-config
           secret:
             secretName: apono
