@@ -78,6 +78,8 @@ spec:
               value: "https://{{ .Values.githubAccessToken }}@github.com/{{ .Values.templatesRepository }}"
             - name: GIT_SYNC_BRANCH
               value: "master"
+            - name: GIT_SYNC_WAIT
+              value: 300
           volumeMounts:
             - name: git-sync
               mountPath: "/tmp/git"
