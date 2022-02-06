@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   apono-agent:
   - apiVersion: v2
+    appVersion: 1.1.9
+    created: "2022-02-06T17:37:33.201251+02:00"
+    description: A Helm chart for Kubernetes
+    digest: 44e956c17ff2c6c6390bc1c4f492aa1a3a66e96c25a672d4946a88111c6ee99e
+    name: apono-agent
+    type: application
+    urls:
+    - https://apono-io.github.io/apono-agent-helm-chart/packaged/apono-agent-1.0.16.tgz
+    version: 1.0.16
+  - apiVersion: v2
     appVersion: 1.1.8
-    created: "2022-02-06T12:00:30.890452+02:00"
+    created: "2022-02-06T17:37:33.200331+02:00"
     description: A Helm chart for Kubernetes
     digest: 9825e85e4d811adb082beff66a09a946da7f2afcb34e2edc10d826a363cc833d
     name: apono-agent
@@ -13,7 +23,7 @@ entries:
     version: 1.0.15
   - apiVersion: v2
     appVersion: 1.1.7
-    created: "2022-02-06T12:00:30.889769+02:00"
+    created: "2022-02-06T17:37:33.199428+02:00"
     description: A Helm chart for Kubernetes
     digest: 6b1b6ab44446c71a20fd837dded3eafb296cf3d950fcb0b9bfa5dc3afa219c74
     name: apono-agent
@@ -23,7 +33,7 @@ entries:
     version: 1.0.14
   - apiVersion: v2
     appVersion: 1.1.7
-    created: "2022-02-06T12:00:30.88859+02:00"
+    created: "2022-02-06T17:37:33.198265+02:00"
     description: A Helm chart for Kubernetes
     digest: fde40f820e73d7c9fb73be1eb5725fb82f3f6b60609397be5256c194136b5981
     name: apono-agent
@@ -33,7 +43,7 @@ entries:
     version: 1.0.13
   - apiVersion: v2
     appVersion: 1.1.7
-    created: "2022-02-06T12:00:30.887322+02:00"
+    created: "2022-02-06T17:37:33.196958+02:00"
     description: A Helm chart for Kubernetes
     digest: 9d89bd0c2d29a908e8412293827d4a370b1319d766f453c0c0d3d81268e041dd
     name: apono-agent
@@ -43,7 +53,7 @@ entries:
     version: 1.0.12
   - apiVersion: v2
     appVersion: 1.1.6
-    created: "2022-02-06T12:00:30.886154+02:00"
+    created: "2022-02-06T17:37:33.19583+02:00"
     description: A Helm chart for Kubernetes
     digest: 3393b5d2fa8d8960b20b6863a2da9ed81a0a9ac978594a8b81b3909f20b85717
     name: apono-agent
@@ -53,7 +63,7 @@ entries:
     version: 1.0.11
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2022-02-06T12:00:30.885015+02:00"
+    created: "2022-02-06T17:37:33.194768+02:00"
     description: A Helm chart for Kubernetes
     digest: b24f3e236079963ee45468334f30b94915861d1c923e2e239d0211e475cfbb8a
     name: apono-agent
@@ -63,7 +73,7 @@ entries:
     version: 1.0.10
   - apiVersion: v2
     appVersion: 1.1.4
-    created: "2022-02-06T12:00:30.931163+02:00"
+    created: "2022-02-06T17:37:33.238922+02:00"
     description: A Helm chart for Kubernetes
     digest: 9330229143af72bcbd1607c85c3e28c94376053363462201590fc8c65832f210
     name: apono-agent
@@ -73,7 +83,7 @@ entries:
     version: 1.0.9
   - apiVersion: v2
     appVersion: 1.1.4
-    created: "2022-02-06T12:00:30.930232+02:00"
+    created: "2022-02-06T17:37:33.237976+02:00"
     description: A Helm chart for Kubernetes
     digest: 49b68dd1ba8b7d7782ec9c86c0a939c6ad16796bfe4df548e709f946d5fb3f4c
     name: apono-agent
@@ -83,7 +93,7 @@ entries:
     version: 1.0.8
   - apiVersion: v2
     appVersion: 1.1.3
-    created: "2022-02-06T12:00:30.929293+02:00"
+    created: "2022-02-06T17:37:33.237134+02:00"
     description: A Helm chart for Kubernetes
     digest: 89b0ec2247858f90cc623a6b2054474ac788a015f203d3c2548fafe66f94bbee
     name: apono-agent
@@ -93,7 +103,7 @@ entries:
     version: 1.0.7
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2022-02-06T12:00:30.928233+02:00"
+    created: "2022-02-06T17:37:33.23626+02:00"
     description: A Helm chart for Kubernetes
     digest: 8508f903b364d9593c36f157ea8fcd46804563f17eae9d2380a81ac9450eafdb
     name: apono-agent
@@ -103,7 +113,7 @@ entries:
     version: 1.0.6
   - apiVersion: v2
     appVersion: 1.1.1
-    created: "2022-02-06T12:00:30.926905+02:00"
+    created: "2022-02-06T17:37:33.235303+02:00"
     description: A Helm chart for Kubernetes
     digest: fa17e31160bcb561df96bf1bebedf2bd158e5a60a340e59cb4dda964e12e5368
     name: apono-agent
@@ -113,7 +123,7 @@ entries:
     version: 1.0.5
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2022-02-06T12:00:30.90841+02:00"
+    created: "2022-02-06T17:37:33.216879+02:00"
     description: A Helm chart for Kubernetes
     digest: 509ac5e5ae393c01dcfa551c311dc748582c9baadae130564e96ee904957366c
     name: apono-agent
@@ -123,7 +133,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: 1.0.3
-    created: "2022-02-06T12:00:30.902056+02:00"
+    created: "2022-02-06T17:37:33.211344+02:00"
     description: A Helm chart for Kubernetes
     digest: 0ac7af7cc9cc554e67f7e6ed4ebdd5c7c187ed04413f32f16bef538267346db1
     name: apono-agent
@@ -133,7 +143,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: 1.0.2
-    created: "2022-02-06T12:00:30.89421+02:00"
+    created: "2022-02-06T17:37:33.203585+02:00"
     description: A Helm chart for Kubernetes
     digest: 321ba304ac47520fa3017c70d4dbc144106c45fe9355b188b4d91db0b75fa29e
     name: apono-agent
@@ -143,7 +153,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 1.0.1
-    created: "2022-02-06T12:00:30.88393+02:00"
+    created: "2022-02-06T17:37:33.193741+02:00"
     description: A Helm chart for Kubernetes
     digest: 68309d3f3ad10f0c46133f426b7f144878e29a1424a241af2279a558f6408b58
     name: apono-agent
@@ -151,4 +161,4 @@ entries:
     urls:
     - https://apono-io.github.io/apono-agent-helm-chart/packaged/apono-agent-1.0.1.tgz
     version: 1.0.1
-generated: "2022-02-06T12:00:30.881836+02:00"
+generated: "2022-02-06T17:37:33.19176+02:00"
