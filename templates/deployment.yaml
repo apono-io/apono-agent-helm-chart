@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "apono-agent.fullname" . }}
+  name: {{ include "apono-connector.fullname" . }}
   labels:
-    {{- include "apono-agent.labels" . | nindent 4 }}
+    {{- include "apono-connector.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "apono-agent.selectorLabels" . | nindent 6 }}
+      {{- include "apono-connector.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       annotations:
@@ -17,13 +17,13 @@ spec:
         {{ toYaml .Values.podAnnotations | nindent 8 }}
         {{ end }}
       labels:
-        {{- include "apono-agent.selectorLabels" . | nindent 8 }}
+        {{- include "apono-connector.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "apono-agent.serviceAccountName" . }}
+      serviceAccountName: {{ include "apono-connector.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -38,7 +38,7 @@ spec:
             - mountPath: "/etc/apono"
               name: apono-config
               readOnly: true
-            {{- if (include "apono-agent.secretProviderClassName" .) }}
+            {{- if (include "apono-connector.secretProviderClassName" .) }}
             - name: secrets-store-inline
               readOnly: true
               mountPath: /mnt/secrets-store
@@ -67,7 +67,7 @@ spec:
             - name: APONO_AGENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: apono-agent-id
+                  name: apono-connector-id
                   key: id
             - name: TEMPLATES_PATH
               value: "/app/git-sync/apono-agent-templates"
@@ -93,13 +93,13 @@ spec:
             items:
               - key: config
                 path: "resources_config.json"
-        {{- if (include "apono-agent.secretProviderClassName" .) }}
+        {{- if (include "apono-connector.secretProviderClassName" .) }}
         - name: secrets-store-inline
           csi:
             driver: secrets-store.csi.k8s.io
             readOnly: true
             volumeAttributes:
-              secretProviderClass: {{ include "apono-agent.secretProviderClassName" . }}
+              secretProviderClass: {{ include "apono-connector.secretProviderClassName" . }}
         {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
