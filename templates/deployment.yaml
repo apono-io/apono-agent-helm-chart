@@ -35,22 +35,10 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-            - mountPath: "/etc/apono"
-              name: apono-config
-              readOnly: true
-            {{- if (include "apono-connector.secretProviderClassName" .) }}
-            - name: secrets-store-inline
-              readOnly: true
-              mountPath: /mnt/secrets-store
-            {{- end }}
             - name: git-sync
               readOnly: true
               mountPath: "/app/git-sync"
           env:
-            - name: RESOURCES_CONFIG_PATH
-              value: "/etc/apono/resources_config.json"
-            - name: APONO_SECRETS_DIR
-              value: "/mnt/secrets-store"
             - name: APONO_URL
               value: {{ .Values.apono.url }}
             - name: APONO_WEBSOCKET_SSL
@@ -64,7 +52,7 @@ spec:
                 secretKeyRef:
                   name: apono
                   key: token
-            - name: APONO_AGENT_ID
+            - name: APONO_CONNECTOR_ID
               valueFrom:
                 secretKeyRef:
                   name: apono-connector-id
@@ -87,20 +75,6 @@ spec:
       volumes:
         - name: git-sync
           emptyDir: {}
-        - name: apono-config
-          secret:
-            secretName: apono
-            items:
-              - key: config
-                path: "resources_config.json"
-        {{- if (include "apono-connector.secretProviderClassName" .) }}
-        - name: secrets-store-inline
-          csi:
-            driver: secrets-store.csi.k8s.io
-            readOnly: true
-            volumeAttributes:
-              secretProviderClass: {{ include "apono-connector.secretProviderClassName" . }}
-        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
