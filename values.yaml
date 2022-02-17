@@ -14,10 +14,6 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-templatesRepository: "apono-io/apono-agent-templates"
-githubAccessToken: ""
-gitSyncImage: ""
-
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -72,3 +68,10 @@ apono:
   connectorId: ""
   actionsParallelism: ""
   actionsQueueSize: ""
+  templatesDirecttory: "/app/git-sync/apono-agent-templates"
+
+templatesRepository: "apono-io/apono-agent-templates"
+githubAccessToken: ""
+gitSyncImage: ""
+gitSync:
+  branchName: "master"
