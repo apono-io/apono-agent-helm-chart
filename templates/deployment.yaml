@@ -58,14 +58,14 @@ spec:
                   name: apono-connector-id
                   key: id
             - name: TEMPLATES_PATH
-              value: "/app/git-sync/apono-agent-templates"
+              value: {{ .Values.apono.templatesDirecttory }}
         - name: git-sync
           image: {{ .Values.gitSyncImage | quote }}
           env:
             - name: GIT_SYNC_REPO
               value: "https://{{ .Values.githubAccessToken }}@github.com/{{ .Values.templatesRepository }}"
             - name: GIT_SYNC_BRANCH
-              value: "master"
+              value: {{.Values.gitSync.branchName }}
             - name: GIT_SYNC_WAIT
               value: "300"
           volumeMounts:
